@@ -8,12 +8,13 @@
     <description>Integration of Cropper JS for Vaadin platform</description>
 
     <properties>
-        <vaadin.version>14.3.4</vaadin.version>
+        <vaadin.version>14.4.0</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <lombok.version>1.18.14</lombok.version>
 
         <jetty.version>9.4.28.v20200408</jetty.version>
     </properties>
@@ -150,7 +151,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <version>${lombok.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
