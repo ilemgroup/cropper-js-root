@@ -4,9 +4,9 @@
 
   <groupId>org.jhapy.frontend.component</groupId>
   <artifactId>cropper-js-root</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>3.0.0-SNAPSHOT</version>
 
-  <name>Cropper JS Root</name>
+  <name>Cropper JS - Root</name>
   <description>Integration of Cropper JS for Vaadin platform</description>
 
   <properties>
