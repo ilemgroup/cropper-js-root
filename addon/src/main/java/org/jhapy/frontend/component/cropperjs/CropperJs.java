@@ -1,6 +1,5 @@
 package org.jhapy.frontend.component.cropperjs;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -11,14 +10,12 @@ import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.PropertyDescriptor;
 import com.vaadin.flow.component.PropertyDescriptors;
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.server.AbstractStreamResource;
 import com.vaadin.flow.shared.Registration;
 import elemental.json.JsonValue;
-import java.util.Map;
 import java.util.function.Consumer;
 import lombok.Getter;
 import org.jhapy.frontend.component.cropperjs.model.CanvasData;
@@ -26,7 +23,6 @@ import org.jhapy.frontend.component.cropperjs.model.ContainerData;
 import org.jhapy.frontend.component.cropperjs.model.CropBoxData;
 import org.jhapy.frontend.component.cropperjs.model.Data;
 import org.jhapy.frontend.component.cropperjs.model.DragMode;
-import org.jhapy.frontend.component.cropperjs.model.GetCroppedCanvasOptions;
 import org.jhapy.frontend.component.cropperjs.model.ImageData;
 import org.jhapy.frontend.component.cropperjs.model.Pivot;
 import org.jhapy.frontend.component.cropperjs.model.SetCanvasDataOptions;
@@ -49,7 +45,8 @@ import org.jhapy.frontend.component.event.ZoomEvent;
 public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSize, HasStyle,
     HasTheme {
 
-  private static final PropertyDescriptor<String, String> srcDescriptor = PropertyDescriptors.attributeWithDefault("src", "");
+  private static final PropertyDescriptor<String, String> srcDescriptor = PropertyDescriptors
+      .attributeWithDefault("src", "");
 
   private CropperConfiguration config = new CropperConfiguration();
   @Getter
@@ -61,7 +58,7 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
 
   public CropperJs(AbstractStreamResource src, boolean roundedCrop) {
     if (roundedCrop) {
-      getElement().setAttribute( "theme","round-crop");
+      getElement().setAttribute("theme", "round-crop");
     }
     withSrc(src);
   }
@@ -75,11 +72,12 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     return this;
   }
 
-  public void setCropperFaceRound( boolean isRound ) {
-    if ( isRound )
+  public void setCropperFaceRound(boolean isRound) {
+    if (isRound) {
       addThemeName("round-crop");
-    else
+    } else {
       removeThemeName("round-crop");
+    }
   }
 
   public CropperJs withSrc(AbstractStreamResource src) {
@@ -280,9 +278,9 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
    * Replace the image's src and rebuild the cropper.
    *
    * @param url A new image url.
-   * @param hasSameSize If the new image has the same size as the old one, then it will not
-   * rebuild the cropper and only update the URLs of all related images. This can be used for
-   * applying filters.
+   * @param hasSameSize If the new image has the same size as the old one, then it will not rebuild
+   * the cropper and only update the URLs of all related images. This can be used for applying
+   * filters.
    */
   public void replace(String url, boolean hasSameSize) {
     getElement().callJsFunction("replace", url, hasSameSize);

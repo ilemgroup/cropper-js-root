@@ -21,7 +21,6 @@ package org.jhapy.frontend.component.event;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.DomEvent;
 import com.vaadin.flow.component.EventData;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

@@ -34,11 +34,13 @@ public class Pivot {
 
   public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (x != null)
+    if (x != null) {
       parameters.add(String.format("\"x\": %.2f", x));
+    }
 
-    if (y != null)
+    if (y != null) {
       parameters.add(String.format("\"y\": %.2f", y));
+    }
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();

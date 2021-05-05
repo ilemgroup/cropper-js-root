@@ -50,17 +50,21 @@ public class SetCropBoxDataOptions {
 
   public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (left != null)
+    if (left != null) {
       parameters.add(String.format("\"left\": %.2f", left));
+    }
 
-    if (top != null)
+    if (top != null) {
       parameters.add(String.format("\"top\": %.2f", top));
+    }
 
-    if ( width != null )
+    if (width != null) {
       parameters.add(String.format("\"width\": %.2f", width));
+    }
 
-    if ( height != null )
+    if (height != null) {
       parameters.add(String.format("\"height\": %.2f", height));
+    }
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();

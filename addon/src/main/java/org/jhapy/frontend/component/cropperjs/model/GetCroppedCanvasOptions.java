@@ -76,32 +76,42 @@ public class GetCroppedCanvasOptions {
 
   public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (width != null)
+    if (width != null) {
       parameters.add(String.format("\"width\": %.2f", width));
+    }
 
-    if (height != null)
+    if (height != null) {
       parameters.add(String.format("\"height\": %.2f", height));
+    }
 
-    if ( minWidth != null )
+    if (minWidth != null) {
       parameters.add(String.format("\"minWidth\": %.2f", minWidth));
+    }
 
-    if ( minHeight != null )
+    if (minHeight != null) {
       parameters.add(String.format("\"minHeight\": %.2f", minHeight));
+    }
 
-    if ( maxWidth != null )
+    if (maxWidth != null) {
       parameters.add(String.format("\"maxWidth\": %.2f", maxWidth));
+    }
 
-    if ( maxHeight != null )
+    if (maxHeight != null) {
       parameters.add(String.format("\"maxHeight\": %.2f", maxHeight));
+    }
 
-    if ( fillColor != null )
+    if (fillColor != null) {
       parameters.add(String.format("\"fillColor\": %s", fillColor));
+    }
 
-    if ( imageSmoothingEnabled != null )
+    if (imageSmoothingEnabled != null) {
       parameters.add(String.format("\"imageSmoothingEnabled\": %s", imageSmoothingEnabled));
+    }
 
-    if ( imageSmoothingQuality != null )
-      parameters.add(String.format("\"imageSmoothingQuality\": %s", imageSmoothingQuality.getKey()));
+    if (imageSmoothingQuality != null) {
+      parameters
+          .add(String.format("\"imageSmoothingQuality\": %s", imageSmoothingQuality.getKey()));
+    }
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();

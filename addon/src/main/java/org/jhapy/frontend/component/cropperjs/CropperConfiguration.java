@@ -27,28 +27,28 @@ public class CropperConfiguration {
    * <p>
    * Default true
    */
-    private Boolean autoCrop;
+  private Boolean autoCrop;
 
   /**
    * A number between 0 and 1. Define the automatic cropping area size (percentage).
    * <p>
    * Default 0.8 (80% of the image)
    */
-    private Float autoCropArea;
+  private Float autoCropArea;
 
   /**
    * Show the grid background of the container.
    * <p>
    * Default true
    */
-    private Boolean background;
+  private Boolean background;
 
   /**
    * Show the center indicator above the crop box.
    * <p>
    * Default true
    */
-    private Boolean center;
+  private Boolean center;
 
   /**
    * Check if the current image is a cross-origin image.
@@ -67,7 +67,7 @@ public class CropperConfiguration {
    * <p>
    * Default true
    */
-    private Boolean checkCrossOrigin;
+  private Boolean checkCrossOrigin;
 
   /**
    * Check the current image's Exif Orientation information. Note that only a JPEG image may
@@ -83,21 +83,21 @@ public class CropperConfiguration {
    * <p>
    * Default true
    */
-    private Boolean checkOrientation;
+  private Boolean checkOrientation;
 
   /**
    * Enable to move the crop box by dragging.
    * <p>
    * Default true
    */
-    private Boolean cropBoxMovable;
+  private Boolean cropBoxMovable;
 
   /**
    * Enable to resize the crop box by dragging.
    * <p>
    * Default true
    */
-    private Boolean cropBoxResizable;
+  private Boolean cropBoxResizable;
 
   /**
    * The previous cropped data if you had stored, will be passed to setData method automatically
@@ -112,21 +112,21 @@ public class CropperConfiguration {
    * <p>
    * Default 'crop'
    */
-    private DragMode dragMode;
+  private DragMode dragMode;
 
   /**
    * Show the dashed lines above the crop box.
    * <p>
    * Default true
    */
-    private Boolean guides;
+  private Boolean guides;
 
   /**
    * Show the white modal above the crop box (highlight the crop box).
    * <p>
    * Default true
    */
-    private Boolean highlight;
+  private Boolean highlight;
 
   /**
    * Define the initial aspect ratio of the crop box. By default, it is the same as the aspect ratio
@@ -141,28 +141,28 @@ public class CropperConfiguration {
    * <p>
    * Default 0
    */
-    private Float minCanvasHeight;
+  private Float minCanvasHeight;
 
   /**
    * The minimum width of the canvas (image wrapper).
    * <p>
    * Default 0
    */
-    private Float minCanvasWidth;
+  private Float minCanvasWidth;
 
   /**
    * The minimum height of the container.
    * <p>
    * Default 100
    */
-    private Float minContainerHeight;
+  private Float minContainerHeight;
 
   /**
    * The minimum width of the container.
    * <p>
    * Default 200
    */
-    private Float minContainerWidth;
+  private Float minContainerWidth;
 
   /**
    * The minimum height of the crop box.
@@ -171,7 +171,7 @@ public class CropperConfiguration {
    * <p>
    * Default 0
    */
-    private Float minCropBoxHeight;
+  private Float minCropBoxHeight;
 
   /**
    * The minimum width of the crop box.
@@ -180,56 +180,56 @@ public class CropperConfiguration {
    * <p>
    * Default 0
    */
-    private Float minCropBoxWidth;
+  private Float minCropBoxWidth;
 
   /**
    * Show the black modal above the image and under the crop box.
    * <p>
    * Default true
    */
-    private Boolean modal;
+  private Boolean modal;
 
   /**
    * Enable to move the image.
    * <p>
    * Default true
    */
-    private Boolean movable;
+  private Boolean movable;
 
   /**
    * Re-render the cropper when resizing the window.
    * <p>
    * Default true
    */
-    private Boolean responsive;
+  private Boolean responsive;
 
   /**
    * Restore the cropped area after resizing the window.
    * <p>
    * Default true
    */
-    private Boolean restore;
+  private Boolean restore;
 
   /**
    * Enable to rotate the image.
    * <p>
    * Default true
    */
-    private Boolean rotatable;
+  private Boolean rotatable;
 
   /**
    * Enable to scale the image.
    * <p>
    * Default true
    */
-    private Boolean scalable;
+  private Boolean scalable;
 
   /**
    * Enable to toggle drag mode between "crop" and "move" when clicking twice on the cropper.
    * <p>
    * Default true
    */
-    private Boolean toggleDragModeOnDblclick;
+  private Boolean toggleDragModeOnDblclick;
 
   /**
    * Define the view mode of the cropper. If you set viewMode to 0, the crop box can extend outside
@@ -240,136 +240,169 @@ public class CropperConfiguration {
    * <p>
    * Default 0 (No restrictions)
    */
-    private ViewMode viewMode;
+  private ViewMode viewMode;
 
   /**
    * Define zoom ratio when zooming the image by wheeling mouse.
    * <p>
    * Default 0.1
    */
-    private Float wheelZoomRatio;
+  private Float wheelZoomRatio;
 
   /**
    * Enable to zoom the image by dragging touch.
    * <p>
    * Default true
    */
-    private Boolean zoomOnTouch;
+  private Boolean zoomOnTouch;
 
   /**
    * Enable to zoom the image by wheeling mouse.
    * <p>
    * Default true
    */
-    private Boolean zoomOnWheel;
+  private Boolean zoomOnWheel;
 
   /**
    * Enable to zoom the image.
    * <p>
    * Default true
    */
-    private Boolean zoomable;
+  private Boolean zoomable;
 
-    public String getJsonString() {
+  public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (data != null)
+    if (data != null) {
       parameters.add(String.format("\"data\": %s", data.getJsonString()));
+    }
 
-    if (aspectRatio != null)
+    if (aspectRatio != null) {
       parameters.add(String.format("\"aspectRatio\": %.2f", aspectRatio));
+    }
 
-    if ( autoCrop != null )
-    parameters.add(String.format("\"autoCrop\": %s", autoCrop));
+    if (autoCrop != null) {
+      parameters.add(String.format("\"autoCrop\": %s", autoCrop));
+    }
 
-    if ( autoCropArea != null )
-    parameters.add(String.format("\"autoCropArea\": %.2f", autoCropArea));
+    if (autoCropArea != null) {
+      parameters.add(String.format("\"autoCropArea\": %.2f", autoCropArea));
+    }
 
-    if ( background != null )
-    parameters.add(String.format("\"background\": %s", background));
+    if (background != null) {
+      parameters.add(String.format("\"background\": %s", background));
+    }
 
-    if ( center != null )
-    parameters.add(String.format("\"center\": %s", center));
+    if (center != null) {
+      parameters.add(String.format("\"center\": %s", center));
+    }
 
-    if ( checkCrossOrigin != null )
-    parameters.add(String.format("\"checkCrossOrigin\": %s", checkCrossOrigin));
+    if (checkCrossOrigin != null) {
+      parameters.add(String.format("\"checkCrossOrigin\": %s", checkCrossOrigin));
+    }
 
-    if ( checkOrientation != null )
-    parameters.add(String.format("\"checkOrientation\": %s", checkOrientation));
+    if (checkOrientation != null) {
+      parameters.add(String.format("\"checkOrientation\": %s", checkOrientation));
+    }
 
-    if ( cropBoxMovable != null )
-    parameters.add(String.format("\"cropBoxMovable\": %s", cropBoxMovable));
+    if (cropBoxMovable != null) {
+      parameters.add(String.format("\"cropBoxMovable\": %s", cropBoxMovable));
+    }
 
-    if ( cropBoxResizable != null )
-    parameters.add(String.format("\"cropBoxResizable\": %s", cropBoxResizable));
+    if (cropBoxResizable != null) {
+      parameters.add(String.format("\"cropBoxResizable\": %s", cropBoxResizable));
+    }
 
-    if ( cropBoxMovable != null )
-    parameters.add(String.format("\"cropBoxMovable\": %s", cropBoxMovable));
+    if (cropBoxMovable != null) {
+      parameters.add(String.format("\"cropBoxMovable\": %s", cropBoxMovable));
+    }
 
-    if ( dragMode != null )
-    parameters.add(String.format("\"dragMode\": \"%s\"", dragMode.getKey()));
+    if (dragMode != null) {
+      parameters.add(String.format("\"dragMode\": \"%s\"", dragMode.getKey()));
+    }
 
-    if ( guides != null )
-    parameters.add(String.format("\"guides\": %s", guides));
+    if (guides != null) {
+      parameters.add(String.format("\"guides\": %s", guides));
+    }
 
-    if ( highlight != null )
-    parameters.add(String.format("\"highlight\": %s", highlight));
+    if (highlight != null) {
+      parameters.add(String.format("\"highlight\": %s", highlight));
+    }
 
-    if (initialAspectRatio != null)
+    if (initialAspectRatio != null) {
       parameters.add(String.format("\"initialAspectRatio\": %.2f", initialAspectRatio));
+    }
 
-    if ( minCanvasHeight != null )
-    parameters.add(String.format("\"minCanvasHeight\": %.2f", minCanvasHeight));
+    if (minCanvasHeight != null) {
+      parameters.add(String.format("\"minCanvasHeight\": %.2f", minCanvasHeight));
+    }
 
-    if ( minCanvasWidth != null )
-    parameters.add(String.format("\"minCanvasWidth\": %.2f", minCanvasWidth));
+    if (minCanvasWidth != null) {
+      parameters.add(String.format("\"minCanvasWidth\": %.2f", minCanvasWidth));
+    }
 
-    if ( minContainerHeight != null )
-    parameters.add(String.format("\"minContainerHeight\": %.2f", minContainerHeight));
+    if (minContainerHeight != null) {
+      parameters.add(String.format("\"minContainerHeight\": %.2f", minContainerHeight));
+    }
 
-    if ( minContainerWidth != null )
-    parameters.add(String.format("\"minContainerWidth\": %.2f", minContainerWidth));
+    if (minContainerWidth != null) {
+      parameters.add(String.format("\"minContainerWidth\": %.2f", minContainerWidth));
+    }
 
-    if ( minCropBoxHeight != null )
-    parameters.add(String.format("\"minCropBoxHeight\": %.2f", minCropBoxHeight));
+    if (minCropBoxHeight != null) {
+      parameters.add(String.format("\"minCropBoxHeight\": %.2f", minCropBoxHeight));
+    }
 
-    if ( minCropBoxWidth != null )
-    parameters.add(String.format("\"minCropBoxWidth\": %.2f", minCropBoxWidth));
+    if (minCropBoxWidth != null) {
+      parameters.add(String.format("\"minCropBoxWidth\": %.2f", minCropBoxWidth));
+    }
 
-    if ( modal != null )
-    parameters.add(String.format("\"modal\": %s", modal));
+    if (modal != null) {
+      parameters.add(String.format("\"modal\": %s", modal));
+    }
 
-    if ( movable != null )
-    parameters.add(String.format("\"movable\": %s", movable));
+    if (movable != null) {
+      parameters.add(String.format("\"movable\": %s", movable));
+    }
 
-    if ( responsive != null )
-    parameters.add(String.format("\"responsive\": %s", responsive));
+    if (responsive != null) {
+      parameters.add(String.format("\"responsive\": %s", responsive));
+    }
 
-    if ( restore != null )
-    parameters.add(String.format("\"restore\": %s", restore));
+    if (restore != null) {
+      parameters.add(String.format("\"restore\": %s", restore));
+    }
 
-    if ( rotatable != null )
-    parameters.add(String.format("\"rotatable\": %s", rotatable));
+    if (rotatable != null) {
+      parameters.add(String.format("\"rotatable\": %s", rotatable));
+    }
 
-    if ( scalable != null )
-    parameters.add(String.format("\"scalable\": %s", scalable));
+    if (scalable != null) {
+      parameters.add(String.format("\"scalable\": %s", scalable));
+    }
 
-    if ( toggleDragModeOnDblclick != null )
-    parameters.add(String.format("\"toggleDragModeOnDblclick\": %s", toggleDragModeOnDblclick));
+    if (toggleDragModeOnDblclick != null) {
+      parameters.add(String.format("\"toggleDragModeOnDblclick\": %s", toggleDragModeOnDblclick));
+    }
 
-    if ( viewMode != null )
-    parameters.add(String.format("\"viewMode\": %d", viewMode.getKey()));
+    if (viewMode != null) {
+      parameters.add(String.format("\"viewMode\": %d", viewMode.getKey()));
+    }
 
-    if ( wheelZoomRatio != null )
-    parameters.add(String.format("\"wheelZoomRatio\": %.2f", wheelZoomRatio));
+    if (wheelZoomRatio != null) {
+      parameters.add(String.format("\"wheelZoomRatio\": %.2f", wheelZoomRatio));
+    }
 
-    if ( zoomOnTouch != null )
-    parameters.add(String.format("\"zoomOnTouch\": %s", zoomOnTouch));
+    if (zoomOnTouch != null) {
+      parameters.add(String.format("\"zoomOnTouch\": %s", zoomOnTouch));
+    }
 
-    if ( zoomOnWheel != null )
-    parameters.add(String.format("\"zoomOnWheel\": %s", zoomOnWheel));
+    if (zoomOnWheel != null) {
+      parameters.add(String.format("\"zoomOnWheel\": %s", zoomOnWheel));
+    }
 
-    if ( zoomable != null )
-    parameters.add(String.format("\"zoomable\": %s", zoomable));
+    if (zoomable != null) {
+      parameters.add(String.format("\"zoomable\": %s", zoomable));
+    }
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();

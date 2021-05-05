@@ -53,6 +53,8 @@ public class CropEvent extends ComponentEvent<CropperJs> {
       @EventData("event.detail.scaleX") String scaleX,
       @EventData("event.detail.scaleY") String scaleY) {
     super(source, fromClient);
-    this.data = new Data(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(width), Float.parseFloat(height), Float.parseFloat(rotate), Float.parseFloat(scaleX), Float.parseFloat(scaleY));
+    this.data = new Data(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(width),
+        Float.parseFloat(height), Float.parseFloat(rotate), Float.parseFloat(scaleX),
+        Float.parseFloat(scaleY));
   }
 }

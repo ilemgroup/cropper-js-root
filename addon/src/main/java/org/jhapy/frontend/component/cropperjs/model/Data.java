@@ -67,26 +67,33 @@ public class Data {
 
   public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (x != null)
+    if (x != null) {
       parameters.add(String.format("\"x\": %.2f", x));
+    }
 
-    if (y != null)
+    if (y != null) {
       parameters.add(String.format("\"y\": %.2f", y));
+    }
 
-    if ( width != null )
+    if (width != null) {
       parameters.add(String.format("\"width\": %.2f", width));
+    }
 
-    if ( height != null )
+    if (height != null) {
       parameters.add(String.format("\"height\": %.2f", height));
+    }
 
-    if ( rotate != null )
+    if (rotate != null) {
       parameters.add(String.format("\"rotate\": %.2f", rotate));
+    }
 
-    if ( scaleX != null )
+    if (scaleX != null) {
       parameters.add(String.format("\"scaleX\": %.2f", scaleX));
+    }
 
-    if ( scaleY != null )
+    if (scaleY != null) {
       parameters.add(String.format("\"fillColor\": %.2f", scaleY));
+    }
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();
