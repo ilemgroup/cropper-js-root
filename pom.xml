@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.jhapy.frontend.component</groupId>
-  <artifactId>cropper-js-root</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+    <groupId>org.jhapy.frontend.component</groupId>
+    <artifactId>cropper-js-root</artifactId>
+    <version>1.1.0</version>
 
   <name>Cropper JS Root</name>
   <description>Integration of Cropper JS for Vaadin platform</description>
@@ -30,5 +31,14 @@
     <module>addon</module>
     <module>demo</module>
   </modules>
-
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-esms-snapshots</id>
+            <url>https://repository.preprod.weforum.org/repository/maven-esms-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-esms-releases</id>
+            <url>https://repository.preprod.weforum.org/repository/maven-esms-releases/</url>
+        </repository>
+    </distributionManagement>
 </project>

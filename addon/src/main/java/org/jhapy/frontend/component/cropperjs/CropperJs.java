@@ -1,42 +1,18 @@
 package org.jhapy.frontend.component.cropperjs;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.vaadin.flow.component.AttachEvent;
-import com.vaadin.flow.component.ComponentEventListener;
-import com.vaadin.flow.component.DetachEvent;
-import com.vaadin.flow.component.HasSize;
-import com.vaadin.flow.component.HasStyle;
-import com.vaadin.flow.component.HasTheme;
-import com.vaadin.flow.component.PropertyDescriptor;
-import com.vaadin.flow.component.PropertyDescriptors;
-import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.server.AbstractStreamResource;
 import com.vaadin.flow.shared.Registration;
 import elemental.json.JsonValue;
-import java.util.Map;
-import java.util.function.Consumer;
 import lombok.Getter;
-import org.jhapy.frontend.component.cropperjs.model.CanvasData;
-import org.jhapy.frontend.component.cropperjs.model.ContainerData;
-import org.jhapy.frontend.component.cropperjs.model.CropBoxData;
-import org.jhapy.frontend.component.cropperjs.model.Data;
-import org.jhapy.frontend.component.cropperjs.model.DragMode;
-import org.jhapy.frontend.component.cropperjs.model.GetCroppedCanvasOptions;
-import org.jhapy.frontend.component.cropperjs.model.ImageData;
-import org.jhapy.frontend.component.cropperjs.model.Pivot;
-import org.jhapy.frontend.component.cropperjs.model.SetCanvasDataOptions;
-import org.jhapy.frontend.component.cropperjs.model.SetCropBoxDataOptions;
-import org.jhapy.frontend.component.event.CropEndEvent;
-import org.jhapy.frontend.component.event.CropEvent;
-import org.jhapy.frontend.component.event.CropMoveEvent;
-import org.jhapy.frontend.component.event.CropStartEvent;
-import org.jhapy.frontend.component.event.ReadyEvent;
-import org.jhapy.frontend.component.event.ZoomEvent;
+import org.jhapy.frontend.component.cropperjs.model.*;
+import org.jhapy.frontend.component.event.*;
+
+import java.util.function.Consumer;
 
 /**
  * @author Alexandre Clavaud.
@@ -44,12 +20,12 @@ import org.jhapy.frontend.component.event.ZoomEvent;
  * @since 01/09/2020
  */
 @Tag("vaadin-cropperjs")
-@NpmPackage(value = "cropperjs", version = "1.5.7")
+@NpmPackage(value = "cropperjs", version = "1.5.12")
 @JsModule("./org/jhapy/frontend/component/cropperjs/cropper.js")
-public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSize, HasStyle,
-    HasTheme {
+public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSize, HasStyle, HasTheme {
 
-  private static final PropertyDescriptor<String, String> srcDescriptor = PropertyDescriptors.attributeWithDefault("src", "");
+  private static final PropertyDescriptor<String, String> srcDescriptor =
+          PropertyDescriptors.attributeWithDefault("src", "");
 
   private CropperConfiguration config = new CropperConfiguration();
   @Getter
@@ -61,7 +37,7 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
 
   public CropperJs(AbstractStreamResource src, boolean roundedCrop) {
     if (roundedCrop) {
-      getElement().setAttribute( "theme","round-crop");
+      getElement().setAttribute("theme", "round-crop");
     }
     withSrc(src);
   }
@@ -70,91 +46,28 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     withSrc(src);
   }
 
-  public CropperJs withConfig(CropperConfiguration config) {
-    this.config = config;
-    return this;
-  }
-
-  public void setCropperFaceRound( boolean isRound ) {
-    if ( isRound )
-      addThemeName("round-crop");
-    else
-      removeThemeName("round-crop");
-  }
-
-  public CropperJs withSrc(AbstractStreamResource src) {
-    getElement().setAttribute("src", src);
-    return getAndUpdateConfig();
-  }
-
-  public Registration addCropListener(
-      ComponentEventListener<CropEvent> listener) {
-    return addListener(CropEvent.class, listener);
-  }
-
-  public Registration addCropStartListener(
-      ComponentEventListener<CropStartEvent> listener) {
-    return addListener(CropStartEvent.class, listener);
-  }
-
-  public Registration addCropEndListener(
-      ComponentEventListener<CropEndEvent> listener) {
+  public Registration addCropEndListener(ComponentEventListener<CropEndEvent> listener) {
     return addListener(CropEndEvent.class, listener);
   }
 
-  public Registration addCropMoveListener(
-      ComponentEventListener<CropMoveEvent> listener) {
+  public Registration addCropListener(ComponentEventListener<CropEvent> listener) {
+    return addListener(CropEvent.class, listener);
+  }
+
+  public Registration addCropMoveListener(ComponentEventListener<CropMoveEvent> listener) {
     return addListener(CropMoveEvent.class, listener);
   }
 
-  public Registration addReadyListener(
-      ComponentEventListener<ReadyEvent> listener) {
+  public Registration addCropStartListener(ComponentEventListener<CropStartEvent> listener) {
+    return addListener(CropStartEvent.class, listener);
+  }
+
+  public Registration addReadyListener(ComponentEventListener<ReadyEvent> listener) {
     return addListener(ReadyEvent.class, listener);
   }
 
-  public Registration addZoomListener(
-      ComponentEventListener<ZoomEvent> listener) {
+  public Registration addZoomListener(ComponentEventListener<ZoomEvent> listener) {
     return addListener(ZoomEvent.class, listener);
-  }
-
-  protected CropperConfiguration getConfigInitialized() {
-    if (this.config == null) {
-      this.config = new CropperConfiguration();
-    }
-    return this.config;
-  }
-
-  public CropperJs withSrc(String src) {
-    set(srcDescriptor, src);
-    return getAndUpdateConfig();
-  }
-
-  protected CropperJs getAndUpdateConfig() {
-    if (isAttached()) {
-      rebuildImage();
-    }
-    return this;
-  }
-
-  protected void updateConfig() {
-    getModel().setCroppieOptions(config.getJsonString());
-  }
-
-  public void rebuildImage() {
-    getElement().callJsFunction("updateImage");
-  }
-
-  @Override
-  protected void onAttach(AttachEvent attachEvent) {
-    super.onAttach(attachEvent);
-    attached = true;
-    updateConfig();
-  }
-
-  @Override
-  protected void onDetach(DetachEvent detachEvent) {
-    super.onDetach(detachEvent);
-    attached = false;
   }
 
   /**
@@ -192,8 +105,17 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     getElement().callJsFunction("enable");
   }
 
+  protected CropperJs getAndUpdateConfig() {
+    if (isAttached()) {
+      rebuildImage();
+    }
+    return this;
+  }
+
   /**
    * Output the image position, size, and other related data.
+   *
+   * @param callback Callback
    */
   public void getCanvasData(Consumer<CanvasData> callback) {
     getElement().callJsFunction("getCanvasData").then(JsonValue.class, result -> {
@@ -201,8 +123,17 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     });
   }
 
+  protected CropperConfiguration getConfigInitialized() {
+    if (this.config == null) {
+      this.config = new CropperConfiguration();
+    }
+    return this.config;
+  }
+
   /**
    * Output the container size data.
+   *
+   * @param callback Callback
    */
   public void getContainerData(Consumer<ContainerData> callback) {
     getElement().callJsFunction("getContainerData").then(JsonValue.class, result -> {
@@ -212,6 +143,8 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
 
   /**
    * Output the crop box position and size data.
+   *
+   * @param callback Callback
    */
   public void getCropBoxData(Consumer<CropBoxData> callback) {
     getElement().callJsFunction("getCropBoxData").then(JsonValue.class, result -> {
@@ -222,6 +155,8 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
   /**
    * Output the final cropped area position and size data (base on the natural size of the original
    * image).
+   *
+   * @param callback Callback
    */
   public void getData(Consumer<Data> callback) {
     getElement().callJsFunction("getData").then(JsonValue.class, result -> {
@@ -233,7 +168,8 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
    * Output the final cropped area position and size data (base on the natural size of the original
    * image).
    *
-   * @param rounded Set true to get rounded values.
+   * @param rounded  Set true to get rounded values.
+   * @param callback Callback
    */
   public void getData(Boolean rounded, Consumer<Data> callback) {
     getElement().callJsFunction("getData", rounded).then(JsonValue.class, result -> {
@@ -241,6 +177,12 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     });
   }
 
+  /**
+   * Output the final cropped area position and size data (base on the natural size of the original
+   * image).
+   *
+   * @param callback Callback
+   */
   public void getImageData(Consumer<ImageData> callback) {
     getElement().callJsFunction("getImageData").then(JsonValue.class, result -> {
       callback.accept(new Gson().fromJson(result.toJson(), ImageData.class));
@@ -267,6 +209,23 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     getElement().callJsFunction("moveTo", Float.toString(x), Float.toString(y));
   }
 
+  @Override
+  protected void onAttach(AttachEvent attachEvent) {
+    super.onAttach(attachEvent);
+    attached = true;
+    updateConfig();
+  }
+
+  @Override
+  protected void onDetach(DetachEvent detachEvent) {
+    super.onDetach(detachEvent);
+    attached = false;
+  }
+
+  public void rebuildImage() {
+    getElement().callJsFunction("updateImage");
+  }
+
   /**
    * Replace the image's src and rebuild the cropper.
    *
@@ -279,10 +238,10 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
   /**
    * Replace the image's src and rebuild the cropper.
    *
-   * @param url A new image url.
+   * @param url         A new image url.
    * @param hasSameSize If the new image has the same size as the old one, then it will not
-   * rebuild the cropper and only update the URLs of all related images. This can be used for
-   * applying filters.
+   *                    rebuild the cropper and only update the URLs of all related images. This can be used for
+   *                    applying filters.
    */
   public void replace(String url, boolean hasSameSize) {
     getElement().callJsFunction("replace", url, hasSameSize);
@@ -296,10 +255,33 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
   }
 
   /**
+   * Resize the image to a specific height and width
+   *
+   * @param height The new height of the image
+   * @param width  The new width of the image
+   */
+  public void resize(String height, String width) {
+    int _height = Integer.parseInt(height.substring(0, height.indexOf("px")).trim());
+    int _width = Integer.parseInt(width.substring(0, width.indexOf("px")).trim());
+
+    getElement().callJsFunction("resizeImage", _height - 250, _width - 20);
+  }
+
+  /**
+   * Resize the image to a specific height and width
+   *
+   * @param height The new height of the image
+   * @param width  The new width of the image
+   */
+  public void resize(int height, int width) {
+    getElement().callJsFunction("resizeImage", height - 250, width - 20);
+  }
+
+  /**
    * Rotate the image with a relative degree.
    *
-   * @param degree Rotate right: requires a positive number (degree > 0), Rotate left: requires a
-   * negative number (degree < 0)
+   * @param degree Rotate right: requires a positive number (degree &gt; 0), Rotate left: requires a
+   *               negative number (degree &lt; 0)
    */
   public void rotate(float degree) {
     getElement().callJsFunction("rotate", Float.toString(degree));
@@ -308,8 +290,8 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
   /**
    * Rotate the image to an absolute degree.
    *
-   * @param degree Rotate right: requires a positive number (degree > 0), Rotate left: requires a
-   * negative number (degree < 0)
+   * @param degree Rotate right: requires a positive number (degree &gt; 0), Rotate left: requires a
+   *               negative number (degree &lt; 0)
    */
   public void rotateTo(float degree) {
     getElement().callJsFunction("rotateTo", Float.toString(degree));
@@ -319,9 +301,9 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
    * Scale the image.
    *
    * @param scaleX The scaling factor to apply to the abscissa of the image. When equal to 1 it does
-   * nothing.
+   *               nothing.
    * @param scaleY The scaling factor to apply on the ordinate of the image. When equal to 1 it does
-   * nothing.
+   *               nothing.
    */
   public void scale(float scaleX, float scaleY) {
     getElement().callJsFunction("scale", Float.toString(scaleX), Float.toString(scaleY));
@@ -331,7 +313,7 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
    * Scale the abscissa of the image.
    *
    * @param scaleX The scaling factor to apply to the abscissa of the image. When equal to 1 it does
-   * nothing.
+   *               nothing.
    */
   public void scaleX(float scaleX) {
     getElement().callJsFunction("scaleX", Float.toString(scaleX));
@@ -341,7 +323,7 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
    * Scale the ordinate of the image.
    *
    * @param scaleY The scaling factor to apply on the ordinate of the image. When equal to 1 it does
-   * nothing.
+   *               nothing.
    */
   public void scaleY(float scaleY) {
     getElement().callJsFunction("scaleY", Float.toString(scaleY));
@@ -365,6 +347,11 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     getElement().callJsFunction("setCanvasData", data.getJsonString());
   }
 
+  /**
+   * Change the canvas (image wrapper) position and size with new data.
+   *
+   * @param jsonData The new position and size of the canvas
+   */
   public void setCanvasData(String jsonData) {
     getElement().callJsFunction("setCanvasData", jsonData);
   }
@@ -378,27 +365,47 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     getElement().callJsFunction("setCropBoxData", data.getJsonString());
   }
 
+  /**
+   * Change the crop box position and size with new data.
+   *
+   * @param jsonData The new position and size of the crop box
+   */
   public void setCropBoxData(String jsonData) {
     getElement().callJsFunction("setCropBoxData", jsonData);
   }
 
+  public void setCropperFaceRound(boolean isRound) {
+    if (isRound) addThemeName("round-crop");
+    else removeThemeName("round-crop");
+  }
+
   /**
    * Change the cropped area position and size with new data (base on the original image).
-   *
+   * <p>
    * This method only available when the value of the viewMode option is greater than or equal to
    * 1.
+   *
+   * @param data The new position and size of the crop box
    */
   public void setData(Data data) {
     getElement().callJsFunction("setData", data.getJsonString());
   }
 
+  /**
+   * Change the cropped area position and size with new data (base on the original image).
+   * <p>
+   * This method only available when the value of the viewMode option is greater than or equal to
+   * 1.
+   *
+   * @param jsonData The new position and size of the crop box
+   */
   public void setData(String jsonData) {
     getElement().callJsFunction("setData", jsonData);
   }
 
   /**
    * Change the drag mode.
-   *
+   * <p>
    * Tips: You can toggle the "crop" and "move" mode by double click on the cropper.
    *
    * @param dragMode Drag mode ('none', 'crop', 'move')
@@ -407,11 +414,30 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
     getElement().callJsFunction("setDragMode", dragMode.getKey());
   }
 
+  protected void updateConfig() {
+    getModel().setCroppieOptions(config.getJsonString());
+  }
+
+  public CropperJs withConfig(CropperConfiguration config) {
+    this.config = config;
+    return this;
+  }
+
+  public CropperJs withSrc(AbstractStreamResource src) {
+    getElement().setAttribute("src", src);
+    return getAndUpdateConfig();
+  }
+
+  public CropperJs withSrc(String src) {
+    set(srcDescriptor, src);
+    return getAndUpdateConfig();
+  }
+
   /**
    * Zoom the canvas (image wrapper) with a relative ratio.
    *
-   * @param ratio Zoom in: requires a positive number (ratio > 0), Zoom out: requires a negative
-   * number (ratio < 0)
+   * @param ratio Zoom in: requires a positive number (ratio &gt; 0), Zoom out: requires a negative
+   *              number (ratio &lt; 0)
    */
   public void zoom(float ratio) {
     getElement().callJsFunction("zoom", Float.toString(ratio));
@@ -420,7 +446,7 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
   /**
    * Zoom the canvas (image wrapper) to an absolute ratio.
    *
-   * @param ratio Requires a positive number (ratio > 0)
+   * @param ratio Requires a positive number (ratio &gt; 0)
    */
   public void zoomTo(float ratio) {
     getElement().callJsFunction("zoomTo", Float.toString(ratio));
@@ -429,22 +455,11 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
   /**
    * Zoom the canvas (image wrapper) to an absolute ratio.
    *
-   * @param ratio Requires a positive number (ratio > 0)
+   * @param ratio Requires a positive number (ratio &gt; 0)
    * @param pivot The coordinate of the center point for zooming, base on the top left corner of the
-   * cropper container.
+   *              cropper container.
    */
   public void zoomTo(float ratio, Pivot pivot) {
     getElement().callJsFunction("zoomTo", Float.toString(ratio), pivot.getJsonString());
-  }
-
-  public void resize(String height, String width) {
-    int _height = Integer.parseInt(height.substring(0, height.indexOf("px")).trim());
-    int _width = Integer.parseInt(width.substring(0, width.indexOf("px")).trim());
-
-    getElement().callJsFunction("resizeImage", _height - 250, _width - 20);
-  }
-
-  public void resize(int height, int width) {
-    getElement().callJsFunction("resizeImage", height - 250, width - 20);
   }
 }

@@ -60,6 +60,6 @@ public class ZoomEvent extends ComponentEvent<CropperJs> {
     super(source, fromClient);
     this.originalEvent = originalEvent;
     this.oldRatio = Float.parseFloat(oldRatio);
-    this.ratio = Float.parseFloat(ratio);;
+        this.ratio = Float.parseFloat(ratio);
   }
 }

@@ -1,13 +1,14 @@
 package org.jhapy.frontend.component.cropperjs;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.jhapy.frontend.component.cropperjs.model.Data;
 import org.jhapy.frontend.component.cropperjs.model.DragMode;
 import org.jhapy.frontend.component.cropperjs.model.ViewMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @lombok.Data
 @AllArgsConstructor
