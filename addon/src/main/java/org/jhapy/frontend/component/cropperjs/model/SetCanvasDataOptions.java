@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Data
 @AllArgsConstructor
@@ -50,17 +51,13 @@ public class SetCanvasDataOptions {
 
   public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (left != null)
-      parameters.add(String.format("\"left\": %.2f", left));
+    if (left != null) parameters.add(String.format(Locale.ROOT, "\"left\": %.2f", left));
 
-    if (top != null)
-      parameters.add(String.format("\"top\": %.2f", top));
+    if (top != null) parameters.add(String.format(Locale.ROOT, "\"top\": %.2f", top));
 
-    if ( width != null )
-      parameters.add(String.format("\"width\": %.2f", width));
+    if ( width != null ) parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
 
-    if ( height != null )
-      parameters.add(String.format("\"height\": %.2f", height));
+    if ( height != null ) parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();

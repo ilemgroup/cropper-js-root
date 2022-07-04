@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @lombok.Data
 @Builder
@@ -68,26 +69,19 @@ public class Data {
 
   public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (x != null)
-      parameters.add(String.format("\"x\": %.2f", x));
+    if (x != null) parameters.add(String.format(Locale.ROOT, "\"x\": %.2f", x));
 
-    if (y != null)
-      parameters.add(String.format("\"y\": %.2f", y));
+    if (y != null) parameters.add(String.format(Locale.ROOT, "\"y\": %.2f", y));
 
-    if ( width != null )
-      parameters.add(String.format("\"width\": %.2f", width));
+    if ( width != null ) parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
 
-    if ( height != null )
-      parameters.add(String.format("\"height\": %.2f", height));
+    if ( height != null ) parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
 
-    if ( rotate != null )
-      parameters.add(String.format("\"rotate\": %.2f", rotate));
+    if ( rotate != null ) parameters.add(String.format(Locale.ROOT, "\"rotate\": %.2f", rotate));
 
-    if ( scaleX != null )
-      parameters.add(String.format("\"scaleX\": %.2f", scaleX));
+    if ( scaleX != null ) parameters.add(String.format(Locale.ROOT, "\"scaleX\": %.2f", scaleX));
 
-    if ( scaleY != null )
-      parameters.add(String.format("\"fillColor\": %.2f", scaleY));
+    if ( scaleY != null ) parameters.add(String.format(Locale.ROOT, "\"fillColor\": %.2f", scaleY));
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();

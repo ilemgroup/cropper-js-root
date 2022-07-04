@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Data
 @AllArgsConstructor
@@ -35,11 +36,9 @@ public class Pivot {
 
   public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (x != null)
-      parameters.add(String.format("\"x\": %.2f", x));
+    if (x != null) parameters.add(String.format(Locale.ROOT, "\"x\": %.2f", x));
 
-    if (y != null)
-      parameters.add(String.format("\"y\": %.2f", y));
+    if (y != null) parameters.add(String.format(Locale.ROOT, "\"y\": %.2f", y));
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();

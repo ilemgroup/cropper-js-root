@@ -9,6 +9,7 @@ import org.jhapy.frontend.component.cropperjs.model.ViewMode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @lombok.Data
 @AllArgsConstructor
@@ -273,104 +274,83 @@ public class CropperConfiguration {
 
     public String getJsonString() {
     List<String> parameters = new ArrayList<>();
-    if (data != null)
-      parameters.add(String.format("\"data\": %s", data.getJsonString()));
+    if (data != null) parameters.add(String.format(Locale.ROOT, "\"data\": %s", data.getJsonString()));
 
-    if (aspectRatio != null)
-      parameters.add(String.format("\"aspectRatio\": %.2f", aspectRatio));
+    if (aspectRatio != null) parameters.add(String.format(Locale.ROOT, "\"aspectRatio\": %.2f", aspectRatio));
 
-    if ( autoCrop != null )
-    parameters.add(String.format("\"autoCrop\": %s", autoCrop));
+    if ( autoCrop != null ) parameters.add(String.format(Locale.ROOT, "\"autoCrop\": %s", autoCrop));
 
-    if ( autoCropArea != null )
-    parameters.add(String.format("\"autoCropArea\": %.2f", autoCropArea));
+    if ( autoCropArea != null ) parameters.add(String.format(Locale.ROOT, "\"autoCropArea\": %.2f", autoCropArea));
 
-    if ( background != null )
-    parameters.add(String.format("\"background\": %s", background));
+    if ( background != null ) parameters.add(String.format(Locale.ROOT, "\"background\": %s", background));
 
-    if ( center != null )
-    parameters.add(String.format("\"center\": %s", center));
+    if ( center != null ) parameters.add(String.format(Locale.ROOT, "\"center\": %s", center));
 
     if ( checkCrossOrigin != null )
-    parameters.add(String.format("\"checkCrossOrigin\": %s", checkCrossOrigin));
+      parameters.add(String.format(Locale.ROOT, "\"checkCrossOrigin\": %s", checkCrossOrigin));
 
     if ( checkOrientation != null )
-    parameters.add(String.format("\"checkOrientation\": %s", checkOrientation));
+      parameters.add(String.format(Locale.ROOT, "\"checkOrientation\": %s", checkOrientation));
 
-    if ( cropBoxMovable != null )
-    parameters.add(String.format("\"cropBoxMovable\": %s", cropBoxMovable));
+    if ( cropBoxMovable != null ) parameters.add(String.format(Locale.ROOT, "\"cropBoxMovable\": %s", cropBoxMovable));
 
     if ( cropBoxResizable != null )
-    parameters.add(String.format("\"cropBoxResizable\": %s", cropBoxResizable));
+      parameters.add(String.format(Locale.ROOT, "\"cropBoxResizable\": %s", cropBoxResizable));
 
-    if ( cropBoxMovable != null )
-    parameters.add(String.format("\"cropBoxMovable\": %s", cropBoxMovable));
+    if ( cropBoxMovable != null ) parameters.add(String.format(Locale.ROOT, "\"cropBoxMovable\": %s", cropBoxMovable));
 
-    if ( dragMode != null )
-    parameters.add(String.format("\"dragMode\": \"%s\"", dragMode.getKey()));
+    if ( dragMode != null ) parameters.add(String.format(Locale.ROOT, "\"dragMode\": \"%s\"", dragMode.getKey()));
 
-    if ( guides != null )
-    parameters.add(String.format("\"guides\": %s", guides));
+    if ( guides != null ) parameters.add(String.format(Locale.ROOT, "\"guides\": %s", guides));
 
-    if ( highlight != null )
-    parameters.add(String.format("\"highlight\": %s", highlight));
+    if ( highlight != null ) parameters.add(String.format(Locale.ROOT, "\"highlight\": %s", highlight));
 
     if (initialAspectRatio != null)
-      parameters.add(String.format("\"initialAspectRatio\": %.2f", initialAspectRatio));
+      parameters.add(String.format(Locale.ROOT, "\"initialAspectRatio\": %.2f", initialAspectRatio));
 
     if ( minCanvasHeight != null )
-    parameters.add(String.format("\"minCanvasHeight\": %.2f", minCanvasHeight));
+      parameters.add(String.format(Locale.ROOT, "\"minCanvasHeight\": %.2f", minCanvasHeight));
 
     if ( minCanvasWidth != null )
-    parameters.add(String.format("\"minCanvasWidth\": %.2f", minCanvasWidth));
+      parameters.add(String.format(Locale.ROOT, "\"minCanvasWidth\": %.2f", minCanvasWidth));
 
     if ( minContainerHeight != null )
-    parameters.add(String.format("\"minContainerHeight\": %.2f", minContainerHeight));
+      parameters.add(String.format(Locale.ROOT, "\"minContainerHeight\": %.2f", minContainerHeight));
 
     if ( minContainerWidth != null )
-    parameters.add(String.format("\"minContainerWidth\": %.2f", minContainerWidth));
+      parameters.add(String.format(Locale.ROOT, "\"minContainerWidth\": %.2f", minContainerWidth));
 
     if ( minCropBoxHeight != null )
-    parameters.add(String.format("\"minCropBoxHeight\": %.2f", minCropBoxHeight));
+      parameters.add(String.format(Locale.ROOT, "\"minCropBoxHeight\": %.2f", minCropBoxHeight));
 
     if ( minCropBoxWidth != null )
-    parameters.add(String.format("\"minCropBoxWidth\": %.2f", minCropBoxWidth));
+      parameters.add(String.format(Locale.ROOT, "\"minCropBoxWidth\": %.2f", minCropBoxWidth));
 
-    if ( modal != null )
-    parameters.add(String.format("\"modal\": %s", modal));
+    if ( modal != null ) parameters.add(String.format(Locale.ROOT, "\"modal\": %s", modal));
 
-    if ( movable != null )
-    parameters.add(String.format("\"movable\": %s", movable));
+    if ( movable != null ) parameters.add(String.format(Locale.ROOT, "\"movable\": %s", movable));
 
-    if ( responsive != null )
-    parameters.add(String.format("\"responsive\": %s", responsive));
+    if ( responsive != null ) parameters.add(String.format(Locale.ROOT, "\"responsive\": %s", responsive));
 
-    if ( restore != null )
-    parameters.add(String.format("\"restore\": %s", restore));
+    if ( restore != null ) parameters.add(String.format(Locale.ROOT, "\"restore\": %s", restore));
 
-    if ( rotatable != null )
-    parameters.add(String.format("\"rotatable\": %s", rotatable));
+    if ( rotatable != null ) parameters.add(String.format(Locale.ROOT, "\"rotatable\": %s", rotatable));
 
-    if ( scalable != null )
-    parameters.add(String.format("\"scalable\": %s", scalable));
+    if ( scalable != null ) parameters.add(String.format(Locale.ROOT, "\"scalable\": %s", scalable));
 
     if ( toggleDragModeOnDblclick != null )
-    parameters.add(String.format("\"toggleDragModeOnDblclick\": %s", toggleDragModeOnDblclick));
+      parameters.add(String.format(Locale.ROOT, "\"toggleDragModeOnDblclick\": %s", toggleDragModeOnDblclick));
 
-    if ( viewMode != null )
-    parameters.add(String.format("\"viewMode\": %d", viewMode.getKey()));
+    if ( viewMode != null ) parameters.add(String.format(Locale.ROOT, "\"viewMode\": %d", viewMode.getKey()));
 
     if ( wheelZoomRatio != null )
-    parameters.add(String.format("\"wheelZoomRatio\": %.2f", wheelZoomRatio));
+      parameters.add(String.format(Locale.ROOT, "\"wheelZoomRatio\": %.2f", wheelZoomRatio));
 
-    if ( zoomOnTouch != null )
-    parameters.add(String.format("\"zoomOnTouch\": %s", zoomOnTouch));
+    if ( zoomOnTouch != null ) parameters.add(String.format(Locale.ROOT, "\"zoomOnTouch\": %s", zoomOnTouch));
 
-    if ( zoomOnWheel != null )
-    parameters.add(String.format("\"zoomOnWheel\": %s", zoomOnWheel));
+    if ( zoomOnWheel != null ) parameters.add(String.format(Locale.ROOT, "\"zoomOnWheel\": %s", zoomOnWheel));
 
-    if ( zoomable != null )
-    parameters.add(String.format("\"zoomable\": %s", zoomable));
+    if ( zoomable != null ) parameters.add(String.format(Locale.ROOT, "\"zoomable\": %s", zoomable));
 
     StringBuilder result = new StringBuilder("{");
     int paramSize = parameters.size();
