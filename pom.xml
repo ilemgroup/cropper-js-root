@@ -34,11 +34,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>nexus-esms-snapshots</id>
-            <url>https://nexuseks.preprod.weforum.org/repository/maven-esms-snapshots/</url>
+            <url>https://nexuseks.weforum.local/repository/maven-esms-snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>nexus-esms-releases</id>
-            <url>https://nexuseks.preprod.weforum.org/repository/maven-esms-releases/</url>
+            <url>https://nexuseks.weforum.local/repository/maven-esms-releases/</url>
         </repository>
     </distributionManagement>
 </project>
