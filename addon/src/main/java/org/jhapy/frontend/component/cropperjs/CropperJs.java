@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
-import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.server.AbstractStreamResource;
 import com.vaadin.flow.shared.Registration;
 import elemental.json.JsonValue;
@@ -13,6 +12,8 @@ import org.jhapy.frontend.component.cropperjs.model.*;
 import org.jhapy.frontend.component.event.*;
 
 import java.util.function.Consumer;
+import com.vaadin.flow.component.littemplate.LitTemplate;
+import com.vaadin.flow.component.template.Id;
 
 /**
  * @author Alexandre Clavaud.
@@ -20,9 +21,9 @@ import java.util.function.Consumer;
  * @since 01/09/2020
  */
 @Tag("vaadin-cropperjs")
-@NpmPackage(value = "cropperjs", version = "1.5.12")
+@NpmPackage(value = "cropperjs", version = "1.5.13")
 @JsModule("./org/jhapy/frontend/component/cropperjs/cropper.js")
-public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSize, HasStyle, HasTheme {
+public class CropperJs extends LitTemplate implements HasSize, HasStyle, HasTheme {
 
   private static final PropertyDescriptor<String, String> srcDescriptor =
           PropertyDescriptors.attributeWithDefault("src", "");
@@ -413,6 +414,10 @@ public class CropperJs extends PolymerTemplate<CropperJsModel> implements HasSiz
   public void setDragMode(DragMode dragMode) {
     getElement().callJsFunction("setDragMode", dragMode.getKey());
   }
+
+    private CropperJsModel getModel() {
+      return jsonString -> getElement().setProperty("croppieOptions", jsonString);
+    }
 
   protected void updateConfig() {
     getModel().setCroppieOptions(config.getJsonString());

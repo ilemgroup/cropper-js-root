@@ -18,9 +18,7 @@
 
 package org.jhapy.frontend.component.cropperjs;
 
-import com.vaadin.flow.templatemodel.TemplateModel;
-
-public interface CropperJsModel extends TemplateModel {
+public interface CropperJsModel {
 
   void setCroppieOptions(String jsonString);
 
