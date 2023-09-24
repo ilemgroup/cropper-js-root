@@ -32,66 +32,80 @@ import java.util.Locale;
 @NoArgsConstructor
 public class Data {
 
-  /**
-   * The offset left of the cropped area
-   */
-  private Float x;
+    /**
+     * The offset left of the cropped area
+     */
+    private Float x;
 
-  /**
-   * The offset top of the cropped area
-   */
-  private Float y;
+    /**
+     * The offset top of the cropped area
+     */
+    private Float y;
 
-  /**
-   * The width of the cropped area
-   */
-  private Float width;
+    /**
+     * The width of the cropped area
+     */
+    private Float width;
 
-  /**
-   * The height of the cropped area
-   */
-  private Float height;
+    /**
+     * The height of the cropped area
+     */
+    private Float height;
 
-  /**
-   * The rotated degrees of the image
-   */
-  private Float rotate;
+    /**
+     * The rotated degrees of the image
+     */
+    private Float rotate;
 
-  /**
-   * The scaling factor to apply on the abscissa of the image
-   */
-  private Float scaleX;
+    /**
+     * The scaling factor to apply on the abscissa of the image
+     */
+    private Float scaleX;
 
-  /**
-   * The scaling factor to apply on the ordinate of the image
-   */
-  private Float scaleY;
+    /**
+     * The scaling factor to apply on the ordinate of the image
+     */
+    private Float scaleY;
 
-  public String getJsonString() {
-    List<String> parameters = new ArrayList<>();
-    if (x != null) parameters.add(String.format(Locale.ROOT, "\"x\": %.2f", x));
+    public String getJsonString() {
+        List<String> parameters = new ArrayList<>();
+        if (x != null) {
+            parameters.add(String.format(Locale.ROOT, "\"x\": %.2f", x));
+        }
 
-    if (y != null) parameters.add(String.format(Locale.ROOT, "\"y\": %.2f", y));
+        if (y != null) {
+            parameters.add(String.format(Locale.ROOT, "\"y\": %.2f", y));
+        }
 
-    if ( width != null ) parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
+        if (width != null) {
+            parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
+        }
 
-    if ( height != null ) parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
+        if (height != null) {
+            parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
+        }
 
-    if ( rotate != null ) parameters.add(String.format(Locale.ROOT, "\"rotate\": %.2f", rotate));
+        if (rotate != null) {
+            parameters.add(String.format(Locale.ROOT, "\"rotate\": %.2f", rotate));
+        }
 
-    if ( scaleX != null ) parameters.add(String.format(Locale.ROOT, "\"scaleX\": %.2f", scaleX));
+        if (scaleX != null) {
+            parameters.add(String.format(Locale.ROOT, "\"scaleX\": %.2f", scaleX));
+        }
 
-    if ( scaleY != null ) parameters.add(String.format(Locale.ROOT, "\"fillColor\": %.2f", scaleY));
+        if (scaleY != null) {
+            parameters.add(String.format(Locale.ROOT, "\"fillColor\": %.2f", scaleY));
+        }
 
-    StringBuilder result = new StringBuilder("{");
-    int paramSize = parameters.size();
-    for (int x = 0; x < paramSize; x++) {
-      result.append(parameters.get(x));
-      if (x != paramSize - 1) {
-        result.append(", ");
-      }
+        StringBuilder result = new StringBuilder("{");
+        int paramSize = parameters.size();
+        for (int x = 0; x < paramSize; x++) {
+            result.append(parameters.get(x));
+            if (x != paramSize - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("}");
+        return result.toString();
     }
-    result.append("}");
-    return result.toString();
-  }
 }

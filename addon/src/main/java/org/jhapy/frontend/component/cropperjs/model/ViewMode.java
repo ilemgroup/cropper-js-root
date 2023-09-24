@@ -20,35 +20,32 @@ package org.jhapy.frontend.component.cropperjs.model;
 
 public enum ViewMode {
 
-  /**
-   * no restrictions
-   */
-  NO_RESTRICTION,
-  /*
-   * restrict the crop box to not exceed the size of the canvas.
-   */
-  RESTRICT_TO_CANVAS,
-  /**
-   * restrict the minimum canvas size to fit within the container. If the proportions of the canvas
-   * and the container differ, the minimum canvas will be surrounded by extra space in one of the
-   * dimensions.
-   */
-  RESTRICT_MIN_TO_FIT_WITHiN_CONTAINER,
-  /**
-   * restrict the minimum canvas size to fill fit the container. If the proportions of the canvas
-   * and the container are different, the container will not be able to fit the whole canvas in one
-   * of the dimensions.
-   */
-  RESTRICT_MIN_TO_FILL_FIT_CONTAINER;
+    /**
+     * no restrictions
+     */
+    NO_RESTRICTION, /*
+     * restrict the crop box to not exceed the size of the canvas.
+     */
+    RESTRICT_TO_CANVAS,
+    /**
+     * restrict the minimum canvas size to fit within the container. If the proportions of the canvas
+     * and the container differ, the minimum canvas will be surrounded by extra space in one of the
+     * dimensions.
+     */
+    RESTRICT_MIN_TO_FIT_WITHiN_CONTAINER,
+    /**
+     * restrict the minimum canvas size to fill fit the container. If the proportions of the canvas
+     * and the container are different, the container will not be able to fit the whole canvas in one
+     * of the dimensions.
+     */
+    RESTRICT_MIN_TO_FILL_FIT_CONTAINER;
 
-  public static ViewMode fromInt(Integer key) {
-    return key == null
-        ? null
-        : ViewMode.values()[key];
-  }
+    public static ViewMode fromInt(Integer key) {
+        return key == null ? null : ViewMode.values()[key];
+    }
 
-  public Integer getKey() {
-    return ordinal();
-  }
+    public Integer getKey() {
+        return ordinal();
+    }
 
 }

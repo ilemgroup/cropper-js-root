@@ -20,18 +20,14 @@ package org.jhapy.frontend.component.cropperjs.model;
 
 public enum ImageSmoothingQuality {
 
-  LOW,
-  MEDIUM,
-  HIGH;
+    LOW, MEDIUM, HIGH;
 
-  public static ImageSmoothingQuality fromString(String key) {
-    return key == null
-        ? null
-        : ImageSmoothingQuality.valueOf(key.toUpperCase());
-  }
+    public static ImageSmoothingQuality fromString(String key) {
+        return key == null ? null : ImageSmoothingQuality.valueOf(key.toUpperCase());
+    }
 
-  public String getKey() {
-    return name().toLowerCase();
-  }
+    public String getKey() {
+        return name().toLowerCase();
+    }
 
 }

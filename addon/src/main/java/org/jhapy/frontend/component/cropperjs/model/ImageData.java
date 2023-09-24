@@ -26,19 +26,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ImageData {
 
-  private Float left;
-  private Float top;
+    private Float left;
+    private Float top;
 
-  private Float width;
-  private Float height;
+    private Float width;
+    private Float height;
 
-  private Float rotate;
+    private Float rotate;
 
-  private Float scaleX;
-  private Float scaleY;
+    private Float scaleX;
+    private Float scaleY;
 
-  private Float naturalWidth;
-  private Float naturalHeight;
+    private Float naturalWidth;
+    private Float naturalHeight;
 
-  private Float aspectRatio;
+    private Float aspectRatio;
 }

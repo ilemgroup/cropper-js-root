@@ -27,30 +27,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CanvasData {
 
-  /**
-   * The offset left of the canvas
-   */
-  private Float left;
-  /**
-   * The offset top of the canvas
-   */
-  private Float top;
+    /**
+     * The offset left of the canvas
+     */
+    private Float left;
+    /**
+     * The offset top of the canvas
+     */
+    private Float top;
 
-  /**
-   * The width of the canvas
-   */
-  private Float width;
-  /**
-   * The height of the canvas
-   */
-  private Float height;
+    /**
+     * The width of the canvas
+     */
+    private Float width;
+    /**
+     * The height of the canvas
+     */
+    private Float height;
 
-  /**
-   * The natural width of the canvas (read only)
-   */
-  private Float naturalWidth;
-  /**
-   * The natural height of the canvas (read only)
-   */
-  private Float naturalHeight;
+    /**
+     * The natural width of the canvas (read only)
+     */
+    private Float naturalWidth;
+    /**
+     * The natural height of the canvas (read only)
+     */
+    private Float naturalHeight;
 }

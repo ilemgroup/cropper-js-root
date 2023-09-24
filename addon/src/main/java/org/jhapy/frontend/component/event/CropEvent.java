@@ -30,7 +30,7 @@ import org.jhapy.frontend.component.cropperjs.model.Data;
 
 /**
  * This event fires when the canvas (image wrapper) or the crop box changed.
- *
+ * <p>
  * Notes:
  * <ul>
  * <li>When the autoCrop option is set to true, a crop event will be triggered before the ready event.</li>
@@ -44,15 +44,12 @@ import org.jhapy.frontend.component.cropperjs.model.Data;
 @EqualsAndHashCode(callSuper = false)
 public class CropEvent extends ComponentEvent<CropperJs> {
 
-  private Data data;
+    private Data data;
 
-  public CropEvent(CropperJs source, boolean fromClient, @EventData("event.detail.x") String x,
-      @EventData("event.detail.y") String y, @EventData("event.detail.width") String width,
-      @EventData("event.detail.height") String height,
-      @EventData("event.detail.rotate") String rotate,
-      @EventData("event.detail.scaleX") String scaleX,
-      @EventData("event.detail.scaleY") String scaleY) {
-    super(source, fromClient);
-    this.data = new Data(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(width), Float.parseFloat(height), Float.parseFloat(rotate), Float.parseFloat(scaleX), Float.parseFloat(scaleY));
-  }
+    public CropEvent(CropperJs source, boolean fromClient, @EventData("event.detail.x") String x, @EventData("event.detail.y") String y, @EventData("event.detail.width") String width,
+                     @EventData("event.detail.height") String height, @EventData("event.detail.rotate") String rotate, @EventData("event.detail.scaleX") String scaleX,
+                     @EventData("event.detail.scaleY") String scaleY) {
+        super(source, fromClient);
+        this.data = new Data(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(width), Float.parseFloat(height), Float.parseFloat(rotate), Float.parseFloat(scaleX), Float.parseFloat(scaleY));
+    }
 }

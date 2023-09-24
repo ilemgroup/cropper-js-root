@@ -37,7 +37,7 @@ import org.jhapy.frontend.component.cropperjs.CropperJs;
 @EqualsAndHashCode(callSuper = false)
 public class ReadyEvent extends ComponentEvent<CropperJs> {
 
-  public ReadyEvent(CropperJs source, boolean fromClient) {
-    super(source, fromClient);
-  }
+    public ReadyEvent(CropperJs source, boolean fromClient) {
+        super(source, fromClient);
+    }
 }

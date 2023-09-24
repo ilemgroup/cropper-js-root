@@ -27,14 +27,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContainerData {
 
-  /**
-   * The current width of the container
-   */
-  private Float width;
+    /**
+     * The current width of the container
+     */
+    private Float width;
 
-  /**
-   * The current height of the container
-   */
-  private Float height;
+    /**
+     * The current height of the container
+     */
+    private Float height;
 
 }

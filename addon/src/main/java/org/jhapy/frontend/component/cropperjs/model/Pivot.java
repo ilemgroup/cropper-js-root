@@ -31,25 +31,29 @@ import java.util.Locale;
 @NoArgsConstructor
 public class Pivot {
 
-  private Float x;
-  private Float y;
+    private Float x;
+    private Float y;
 
-  public String getJsonString() {
-    List<String> parameters = new ArrayList<>();
-    if (x != null) parameters.add(String.format(Locale.ROOT, "\"x\": %.2f", x));
+    public String getJsonString() {
+        List<String> parameters = new ArrayList<>();
+        if (x != null) {
+            parameters.add(String.format(Locale.ROOT, "\"x\": %.2f", x));
+        }
 
-    if (y != null) parameters.add(String.format(Locale.ROOT, "\"y\": %.2f", y));
+        if (y != null) {
+            parameters.add(String.format(Locale.ROOT, "\"y\": %.2f", y));
+        }
 
-    StringBuilder result = new StringBuilder("{");
-    int paramSize = parameters.size();
-    for (int x = 0; x < paramSize; x++) {
-      result.append(parameters.get(x));
-      if (x != paramSize - 1) {
-        result.append(", ");
-      }
+        StringBuilder result = new StringBuilder("{");
+        int paramSize = parameters.size();
+        for (int x = 0; x < paramSize; x++) {
+            result.append(parameters.get(x));
+            if (x != paramSize - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("}");
+        return result.toString();
     }
-    result.append("}");
-    return result.toString();
-  }
 
 }

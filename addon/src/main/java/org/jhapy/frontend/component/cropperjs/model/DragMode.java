@@ -20,27 +20,25 @@ package org.jhapy.frontend.component.cropperjs.model;
 
 public enum DragMode {
 
-  /**
-   * create a new crop box
-   */
-  CROP,
-  /**
-   * move the canvas
-   */
-  MOVE,
-  /**
-   * do nothing
-   */
-  NONE;
+    /**
+     * create a new crop box
+     */
+    CROP,
+    /**
+     * move the canvas
+     */
+    MOVE,
+    /**
+     * do nothing
+     */
+    NONE;
 
-  public static DragMode fromString(String key) {
-    return key == null
-        ? null
-        : DragMode.valueOf(key.toUpperCase());
-  }
+    public static DragMode fromString(String key) {
+        return key == null ? null : DragMode.valueOf(key.toUpperCase());
+    }
 
-  public String getKey() {
-    return name().toLowerCase();
-  }
+    public String getKey() {
+        return name().toLowerCase();
+    }
 
 }

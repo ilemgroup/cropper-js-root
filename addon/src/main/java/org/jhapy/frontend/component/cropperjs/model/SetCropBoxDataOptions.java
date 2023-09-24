@@ -31,44 +31,52 @@ import java.util.Locale;
 @NoArgsConstructor
 public class SetCropBoxDataOptions {
 
-  /**
-   * The new offset left of the crop box
-   */
-  private Float left;
-  /**
-   * The new offset top of the crop box
-   */
-  private Float top;
+    /**
+     * The new offset left of the crop box
+     */
+    private Float left;
+    /**
+     * The new offset top of the crop box
+     */
+    private Float top;
 
-  /**
-   * The new width of the crop box
-   */
-  private Float width;
+    /**
+     * The new width of the crop box
+     */
+    private Float width;
 
-  /**
-   * The new height of the crop box
-   */
-  private Float height;
+    /**
+     * The new height of the crop box
+     */
+    private Float height;
 
-  public String getJsonString() {
-    List<String> parameters = new ArrayList<>();
-    if (left != null) parameters.add(String.format(Locale.ROOT, "\"left\": %.2f", left));
+    public String getJsonString() {
+        List<String> parameters = new ArrayList<>();
+        if (left != null) {
+            parameters.add(String.format(Locale.ROOT, "\"left\": %.2f", left));
+        }
 
-    if (top != null) parameters.add(String.format(Locale.ROOT, "\"top\": %.2f", top));
+        if (top != null) {
+            parameters.add(String.format(Locale.ROOT, "\"top\": %.2f", top));
+        }
 
-    if ( width != null ) parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
+        if (width != null) {
+            parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
+        }
 
-    if ( height != null ) parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
+        if (height != null) {
+            parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
+        }
 
-    StringBuilder result = new StringBuilder("{");
-    int paramSize = parameters.size();
-    for (int x = 0; x < paramSize; x++) {
-      result.append(parameters.get(x));
-      if (x != paramSize - 1) {
-        result.append(", ");
-      }
+        StringBuilder result = new StringBuilder("{");
+        int paramSize = parameters.size();
+        for (int x = 0; x < paramSize; x++) {
+            result.append(parameters.get(x));
+            if (x != paramSize - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("}");
+        return result.toString();
     }
-    result.append("}");
-    return result.toString();
-  }
 }

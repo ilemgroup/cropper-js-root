@@ -27,22 +27,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CropBoxData {
 
-  /**
-   * The offset left of the crop box
-   */
-  private Float left;
-  /**
-   * The offset top of the crop box
-   */
-  private Float top;
+    /**
+     * The offset left of the crop box
+     */
+    private Float left;
+    /**
+     * The offset top of the crop box
+     */
+    private Float top;
 
-  /**
-   * The width of the crop box
-   */
-  private Float width;
-  /**
-   * The height of the crop box
-   */
-  private Float height;
+    /**
+     * The width of the crop box
+     */
+    private Float width;
+    /**
+     * The height of the crop box
+     */
+    private Float height;
 
 }

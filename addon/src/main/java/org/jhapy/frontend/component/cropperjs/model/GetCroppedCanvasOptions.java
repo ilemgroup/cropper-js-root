@@ -33,80 +33,96 @@ import java.util.Locale;
 @NoArgsConstructor
 public class GetCroppedCanvasOptions {
 
-  /**
-   * The destination width of the output canvas.
-   */
-  private Float width;
-  /**
-   * The destination height of the output canvas.
-   */
-  private Float height;
+    /**
+     * The destination width of the output canvas.
+     */
+    private Float width;
+    /**
+     * The destination height of the output canvas.
+     */
+    private Float height;
 
-  /**
-   * The minimum destination width of the output canvas, the default value is 0.
-   */
-  private Float minWidth;
-  /**
-   * The minimum destination height of the output canvas, the default value is 0.
-   */
-  private Float minHeight;
+    /**
+     * The minimum destination width of the output canvas, the default value is 0.
+     */
+    private Float minWidth;
+    /**
+     * The minimum destination height of the output canvas, the default value is 0.
+     */
+    private Float minHeight;
 
-  /**
-   * The maximum destination width of the output canvas, the default value is Infinity.
-   */
-  private Float maxWidth;
+    /**
+     * The maximum destination width of the output canvas, the default value is Infinity.
+     */
+    private Float maxWidth;
 
-  /**
-   * The maximum destination height of the output canvas, the default value is Infinity.
-   */
-  private Float maxHeight;
+    /**
+     * The maximum destination height of the output canvas, the default value is Infinity.
+     */
+    private Float maxHeight;
 
-  /**
-   * A color to fill any alpha values in the output canvas, the default value is transparent.
-   */
-  private String fillColor;
+    /**
+     * A color to fill any alpha values in the output canvas, the default value is transparent.
+     */
+    private String fillColor;
 
-  /**
-   * Set to change if images are smoothed (true, default) or not (false).
-   */
-  private Boolean imageSmoothingEnabled;
+    /**
+     * Set to change if images are smoothed (true, default) or not (false).
+     */
+    private Boolean imageSmoothingEnabled;
 
-  /**
-   * Set the quality of image smoothing, one of "low" (default), "medium", or "high".
-   */
-  private ImageSmoothingQuality imageSmoothingQuality;
+    /**
+     * Set the quality of image smoothing, one of "low" (default), "medium", or "high".
+     */
+    private ImageSmoothingQuality imageSmoothingQuality;
 
-  public String getJsonString() {
-    List<String> parameters = new ArrayList<>();
-    if (width != null) parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
+    public String getJsonString() {
+        List<String> parameters = new ArrayList<>();
+        if (width != null) {
+            parameters.add(String.format(Locale.ROOT, "\"width\": %.2f", width));
+        }
 
-    if (height != null) parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
+        if (height != null) {
+            parameters.add(String.format(Locale.ROOT, "\"height\": %.2f", height));
+        }
 
-    if ( minWidth != null ) parameters.add(String.format(Locale.ROOT, "\"minWidth\": %.2f", minWidth));
+        if (minWidth != null) {
+            parameters.add(String.format(Locale.ROOT, "\"minWidth\": %.2f", minWidth));
+        }
 
-    if ( minHeight != null ) parameters.add(String.format(Locale.ROOT, "\"minHeight\": %.2f", minHeight));
+        if (minHeight != null) {
+            parameters.add(String.format(Locale.ROOT, "\"minHeight\": %.2f", minHeight));
+        }
 
-    if ( maxWidth != null ) parameters.add(String.format(Locale.ROOT, "\"maxWidth\": %.2f", maxWidth));
+        if (maxWidth != null) {
+            parameters.add(String.format(Locale.ROOT, "\"maxWidth\": %.2f", maxWidth));
+        }
 
-    if ( maxHeight != null ) parameters.add(String.format(Locale.ROOT, "\"maxHeight\": %.2f", maxHeight));
+        if (maxHeight != null) {
+            parameters.add(String.format(Locale.ROOT, "\"maxHeight\": %.2f", maxHeight));
+        }
 
-    if ( fillColor != null ) parameters.add(String.format(Locale.ROOT, "\"fillColor\": %s", fillColor));
+        if (fillColor != null) {
+            parameters.add(String.format(Locale.ROOT, "\"fillColor\": %s", fillColor));
+        }
 
-    if ( imageSmoothingEnabled != null )
-      parameters.add(String.format(Locale.ROOT, "\"imageSmoothingEnabled\": %s", imageSmoothingEnabled));
+        if (imageSmoothingEnabled != null) {
+            parameters.add(String.format(Locale.ROOT, "\"imageSmoothingEnabled\": %s", imageSmoothingEnabled));
+        }
 
-    if ( imageSmoothingQuality != null )
-      parameters.add(String.format(Locale.ROOT, "\"imageSmoothingQuality\": %s", imageSmoothingQuality.getKey()));
+        if (imageSmoothingQuality != null) {
+            parameters.add(String.format(Locale.ROOT, "\"imageSmoothingQuality\": %s", imageSmoothingQuality.getKey()));
+        }
 
-    StringBuilder result = new StringBuilder("{");
-    int paramSize = parameters.size();
-    for (int x = 0; x < paramSize; x++) {
-      result.append(parameters.get(x));
-      if (x != paramSize - 1) {
-        result.append(", ");
-      }
+        StringBuilder result = new StringBuilder("{");
+        int paramSize = parameters.size();
+        for (int x = 0; x < paramSize; x++) {
+            result.append(parameters.get(x));
+            if (x != paramSize - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("}");
+        return result.toString();
     }
-    result.append("}");
-    return result.toString();
-  }
 }

@@ -38,28 +38,26 @@ import org.jhapy.frontend.component.cropperjs.CropperJs;
 @EqualsAndHashCode(callSuper = false)
 public class ZoomEvent extends ComponentEvent<CropperJs> {
 
-  /**
-   * Options: wheel, touchmove.
-   */
-  private String originalEvent;
+    /**
+     * Options: wheel, touchmove.
+     */
+    private String originalEvent;
 
-  /**
-   * The old (current) ratio of the canvas
-   */
-  private float oldRatio;
+    /**
+     * The old (current) ratio of the canvas
+     */
+    private float oldRatio;
 
-  /**
-   * The new (next) ratio of the canvas (canvasData.width / canvasData.naturalWidth)
-   */
-  private float ratio;
+    /**
+     * The new (next) ratio of the canvas (canvasData.width / canvasData.naturalWidth)
+     */
+    private float ratio;
 
-  public ZoomEvent(CropperJs source, boolean fromClient,
-      @EventData("event.detail.originalEvent") String originalEvent,
-      @EventData("event.detail.oldRatio") String oldRatio,
-      @EventData("event.detail.ratio") String ratio) {
-    super(source, fromClient);
-    this.originalEvent = originalEvent;
-    this.oldRatio = Float.parseFloat(oldRatio);
+    public ZoomEvent(CropperJs source, boolean fromClient, @EventData("event.detail.originalEvent") String originalEvent, @EventData("event.detail.oldRatio") String oldRatio,
+                     @EventData("event.detail.ratio") String ratio) {
+        super(source, fromClient);
+        this.originalEvent = originalEvent;
+        this.oldRatio = Float.parseFloat(oldRatio);
         this.ratio = Float.parseFloat(ratio);
-  }
+    }
 }

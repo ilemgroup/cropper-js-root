@@ -37,15 +37,13 @@ import org.jhapy.frontend.component.cropperjs.CropperJs;
 @EqualsAndHashCode(callSuper = false)
 public class CropStartEvent extends ComponentEvent<CropperJs> {
 
-  private String originalEvent;
-  private String action;
+    private String originalEvent;
+    private String action;
 
-  public CropStartEvent(CropperJs source, boolean fromClient,
-      @EventData("event.detail.originalEvent") String originalEvent,
-      @EventData("event.detail.action") String action) {
-    super(source, fromClient);
-    this.originalEvent = originalEvent;
-    this.action = action;
+    public CropStartEvent(CropperJs source, boolean fromClient, @EventData("event.detail.originalEvent") String originalEvent, @EventData("event.detail.action") String action) {
+        super(source, fromClient);
+        this.originalEvent = originalEvent;
+        this.action = action;
 
-  }
+    }
 }

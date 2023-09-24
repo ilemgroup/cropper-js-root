@@ -20,6 +20,6 @@ package org.jhapy.frontend.component.cropperjs;
 
 public interface CropperJsModel {
 
-  void setCroppieOptions(String jsonString);
+    void setCroppieOptions(String jsonString);
 
 }
