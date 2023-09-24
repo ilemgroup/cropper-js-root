@@ -322,9 +322,6 @@ class CopperJs extends LitElement {
     `;
   }
 
-  protected createRenderRoot(): Element | ShadowRoot {
-    return this;
-  }
 
   static get properties() {
     return {
@@ -469,8 +466,8 @@ class CopperJs extends LitElement {
     this._initCroppie();
   }
 
-  _croppieOptionsChanged(newValue, oldValue) {
-    console.log("_croppieOptionsChanged() :: " + oldValue + " -> " + newValue);
+  _croppieOptionsChanged(newValue) {
+    console.log("_croppieOptionsChanged() :: -> " + newValue);
     var me = this;
     this.config = JSON.parse(newValue);
     this.config["crop"] = function (event) {
@@ -523,17 +520,18 @@ class CopperJs extends LitElement {
     console.log("_initCroppie() :: End");
   }
   set croppieOptions(newValue) {
-    const oldValue = this.croppieOptions;
     this._croppieOptions = newValue;
-    if (oldValue !== newValue) {
-      this._croppieOptionsChanged(newValue, oldValue);
-      this.requestUpdateInternal(
-        "croppieOptions",
-        oldValue,
-        this.constructor.properties.croppieOptions
-      );
-    }
   }
+
+  async firstUpdated(changedProperties) {
+    this._croppieOptionsChanged(this._croppieOptions);
+    this.requestUpdate(
+        "croppieOptions",
+        this.croppieOptions,
+        this.constructor.properties.croppieOptions
+    );
+  }
+
   get croppieOptions() {
     return this._croppieOptions;
   }
