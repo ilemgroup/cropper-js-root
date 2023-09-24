@@ -8,7 +8,7 @@
     <description>Integration of Cropper JS for Vaadin platform</description>
 
     <properties>
-        <vaadin.version>24.1.9</vaadin.version>
+        <vaadin.version>24.1.10</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -371,11 +371,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>nexus-esms-snapshots</id>
-            <url>https://nexuseks.preprod.weforum.org/repository/maven-esms-snapshots/</url>
+            <url>https://nexuseks.weforum.local/repository/maven-esms-snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>nexus-esms-releases</id>
-            <url>https://nexuseks.preprod.weforum.org/repository/maven-esms-releases/</url>
+            <url>https://nexuseks.weforum.local/repository/maven-esms-releases/</url>
         </repository>
     </distributionManagement>
 </project>

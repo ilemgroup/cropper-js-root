@@ -1,4 +1,4 @@
-import { html, LitElement, css } from "lit-element";
+import {LitElement, css, html} from 'lit';
 
 import Cropper from "cropperjs";
 
