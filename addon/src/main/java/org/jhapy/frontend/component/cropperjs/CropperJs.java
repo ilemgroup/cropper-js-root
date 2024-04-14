@@ -20,7 +20,7 @@ import java.util.function.Consumer;
  * @since 01/09/2020
  */
 @Tag("vaadin-cropperjs")
-@NpmPackage(value = "cropperjs", version = "1.5.13")
+@NpmPackage(value = "cropperjs", version = "1.6.1")
 @JsModule("./org/jhapy/frontend/component/cropperjs/cropper.js")
 public class CropperJs extends LitTemplate implements HasSize, HasStyle, HasTheme {
 

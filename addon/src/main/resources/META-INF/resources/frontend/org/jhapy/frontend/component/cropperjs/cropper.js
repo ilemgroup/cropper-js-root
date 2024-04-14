@@ -306,6 +306,9 @@ class CopperJs extends LitElement {
           border-radius: 50%;
         }
 
+        .vaadin-cropper-container {
+          height: 100%;
+        }
         .vaadin-cropper-container img {
           display: block;
           /* This rule is very important, please don't ignore this */
