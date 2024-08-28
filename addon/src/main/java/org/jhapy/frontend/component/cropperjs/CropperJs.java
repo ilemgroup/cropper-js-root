@@ -233,8 +233,8 @@ public class CropperJs extends LitTemplate implements HasSize, HasStyle, HasThem
      * @param width  The new width of the image
      */
     public void resize(String height, String width) {
-        int _height = Integer.parseInt(height.substring(0, height.indexOf("px")).trim());
-        int _width = Integer.parseInt(width.substring(0, width.indexOf("px")).trim());
+        int _height = (int) Float.parseFloat(height.substring(0, height.indexOf("px")).trim());
+        int _width = (int) Float.parseFloat(width.substring(0, width.indexOf("px")).trim());
 
         getElement().callJsFunction("resizeImage", _height - 250, _width - 20);
     }
