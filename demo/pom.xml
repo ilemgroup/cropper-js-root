@@ -4,7 +4,7 @@
 
   <groupId>org.jhapy.frontend.component</groupId>
   <artifactId>cropper-js-demo</artifactId>
-  <version>1.1.5a</version>
+  <version>1.1.5b</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -14,13 +14,13 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- Dependencies -->
-    <vaadin.version>24.4.11</vaadin.version>
+    <vaadin.version>24.6.5</vaadin.version>
   </properties>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.4</version>
+    <version>3.4.3</version>
     <relativePath/>
   </parent>
 
@@ -62,7 +62,7 @@
     <dependency>
       <groupId>org.jhapy.frontend.component</groupId>
       <artifactId>cropper-js</artifactId>
-      <version>1.1.5a</version>
+      <version>1.1.5b</version>
     </dependency>
 
     <dependency>

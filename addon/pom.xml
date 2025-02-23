@@ -3,12 +3,12 @@
 
     <groupId>org.jhapy.frontend.component</groupId>
     <artifactId>cropper-js</artifactId>
-    <version>1.1.5a</version>
+    <version>1.1.5b</version>
     <name>Cropper JS</name>
     <description>Integration of Cropper JS for Vaadin platform</description>
 
     <properties>
-        <vaadin.version>24.4.11</vaadin.version>
+        <vaadin.version>24.6.5</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
