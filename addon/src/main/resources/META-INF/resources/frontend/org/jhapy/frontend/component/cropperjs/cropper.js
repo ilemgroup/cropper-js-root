@@ -1,4 +1,4 @@
-import {LitElement, css, html} from 'lit';
+import {css, html, LitElement} from 'lit';
 
 import Cropper from "cropperjs";
 
@@ -344,6 +344,7 @@ class CopperJs extends LitElement {
 
   constructor() {
     super();
+    this._currentImageUrl = null;
     this.initTimerId = void 0;
   }
 
@@ -399,12 +400,23 @@ class CopperJs extends LitElement {
     this.croppie.moveTo(x, y);
   }
 
-  replace(url) {
-    this.croppie.replace(url);
-  }
+  replace(url, hasSameSize = false) {
+    console.log("replace() :: Switching to new image URL = " + url + " (same size? " + hasSameSize + ")");
 
-  replace(url, hasSameSize) {
-    this.croppie.replace(url, hasSameSize);
+    this._currentImageUrl = url;
+    this.src = url;
+
+    // Ensure Lit re-renders <img .src=${this.src}>
+    this.requestUpdate('src', url);
+
+    const img = this.shadowRoot.querySelector("#image");
+    if (img) {
+      img.src = url;
+    }
+
+    if (this.croppie) {
+      this.croppie.replace(url, hasSameSize);
+    }
   }
 
   reset() {
@@ -461,12 +473,46 @@ class CopperJs extends LitElement {
 
   resizeImage(height, width) {
     console.log("resizeImage() :: " + height + "px / " + width + "px");
-    var ctx = this.shadowRoot.querySelector("#image");
-    console.log("resizeImage() :: Image src = " + ctx.getAttribute("src"));
-    ctx.setAttribute("width", width + "px");
-    ctx.setAttribute("height", height + "px");
+
+    const imageEl = this.shadowRoot.querySelector("#image");
+    const currentSrc = this._currentImageUrl || this.src;
+    imageEl.setAttribute("width", width + "px");
+    imageEl.setAttribute("height", height + "px");
+    this._currentImageUrl = currentSrc;
+
+    const backupCroppieOptions = this.croppieOptions;
+    const data = this.croppie.getData(true);
+    const wasRotated = data.rotate !== 0;
+
+    let cropBox, canvas;
+    if (!wasRotated) {
+      cropBox = this.croppie.getCropBoxData();
+      canvas = this.croppie.getCanvasData();
+    }
+
     this.croppie.destroy();
-    this._initCroppie();
+
+    const restoreState = () => {
+      if (!wasRotated) {
+        this.croppie.setCanvasData(canvas);
+        this.croppie.setCropBoxData(cropBox);
+      }
+      this.croppie.setData(data);
+      this.removeEventListener("cropperjs-ready", restoreState);
+    };
+
+    const applyImageSrc = () => {
+      if (this._currentImageUrl) {
+        console.log("resizeImage() :: Forcing replace() with current image URL");
+        this.croppie.replace(this._currentImageUrl, true);
+      }
+      this.removeEventListener("cropperjs-ready", applyImageSrc);
+    };
+
+    this.addEventListener("cropperjs-ready", restoreState);
+    this.addEventListener("cropperjs-ready", applyImageSrc);
+
+    this._croppieOptionsChanged(backupCroppieOptions);
   }
 
   _croppieOptionsChanged(newValue) {
@@ -522,6 +568,7 @@ class CopperJs extends LitElement {
     this.croppie = new Cropper(ctx, this.config);
     console.log("_initCroppie() :: End");
   }
+
   set croppieOptions(newValue) {
     this._croppieOptions = newValue;
   }
