@@ -3,7 +3,7 @@
 
     <groupId>org.jhapy.frontend.component</groupId>
     <artifactId>cropper-js</artifactId>
-    <version>1.1.5b</version>
+    <version>1.1.5c</version>
     <name>Cropper JS</name>
     <description>Integration of Cropper JS for Vaadin platform</description>
 
